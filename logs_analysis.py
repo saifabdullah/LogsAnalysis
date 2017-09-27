@@ -27,16 +27,11 @@ def top_three_articles():
     rows = cursor.fetchall()
     row_count = 0
     print('**** Top Three Articles by Page View **** ')
-    
+    for (title,views) in rows:
+        print("    {} - {} views".format(title,views))
     print(" ")
-    print(" ")
-    for row in rows:
-        row_count += 1
-        print(
-            "%s:Title                           Pageviews\n"
-            "%s\n" % (row_count, row))
-    print(" ")
-    print(" ")
+    print("-" * 70)
+
     db.close()
     return rows
     top_three = cursor.execute(query)
@@ -54,12 +49,10 @@ def popular_authors():
     rows = cursor.fetchall()
     print('**** Most Popular Authors Based on Total Article Views ****')
     print(" ")
+    for (name,total_views) in rows:
+        print("    {} - {} views".format(name,total_views))
     print(" ")
-    row_count = 0
-    for row in rows:
-        row_count += 1
-        print("%sAuthorName       Totalviews\n %s\n" % (row_count, row))
-    print(" ")
+    print("-" * 70)
     print(" ")
     db.close()
     return rows
@@ -80,16 +73,11 @@ def high_error_days():
     rows = cursor.fetchall()
     print('**Days Where Errorrate Exceeded 1 percents of total request**')
     print(" ")
+    for (date,errors) in rows:
+        print("    {} - {} % errors ".format(date,errors))
     print(" ")
-    if len(rows) == 0:
-        print("Sorry! No day where more than 1p requests lead to errors!")
-        print(" ")
-        print(" ")
-    row_count = 0
-    for row in rows:
-        row_count += 1
-        print("%s:Day:Errorrate: %s\n" % (row_count, row))
-
+    print("-" * 70)
+    print(" ")
     db.close()
     return rows
 
