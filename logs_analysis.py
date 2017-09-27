@@ -27,10 +27,12 @@ def top_three_articles():
     rows = cursor.fetchall()
     row_count = 0
     print('**** Top Three Articles by Page View **** ')
+    print(" ")
     for (title, views) in rows:
         print("    {} - {} views".format(title, views))
     print(" ")
     print("-" * 70)
+    print(" ")
 
     db.close()
     return rows
@@ -71,7 +73,7 @@ def high_error_days():
             "and (a.errors * 100 / b.requests) >=1;"
     cursor.execute(query)
     rows = cursor.fetchall()
-    print('**Days Where Errorrate Exceeded 1 percents of total request**')
+    print('**** Days When errors are more than 1% ****')
     print(" ")
     for (date, errors) in rows:
         print("    {} - {} % errors ".format(date, errors))
