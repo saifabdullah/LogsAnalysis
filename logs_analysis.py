@@ -27,8 +27,8 @@ def top_three_articles():
     rows = cursor.fetchall()
     row_count = 0
     print('**** Top Three Articles by Page View **** ')
-    for (title,views) in rows:
-        print("    {} - {} views".format(title,views))
+    for (title, views) in rows:
+        print("    {} - {} views".format(title, views))
     print(" ")
     print("-" * 70)
 
@@ -49,8 +49,8 @@ def popular_authors():
     rows = cursor.fetchall()
     print('**** Most Popular Authors Based on Total Article Views ****')
     print(" ")
-    for (name,total_views) in rows:
-        print("    {} - {} views".format(name,total_views))
+    for (name, total_views) in rows:
+        print("    {} - {} views".format(name, total_views))
     print(" ")
     print("-" * 70)
     print(" ")
@@ -73,8 +73,8 @@ def high_error_days():
     rows = cursor.fetchall()
     print('**Days Where Errorrate Exceeded 1 percents of total request**')
     print(" ")
-    for (date,errors) in rows:
-        print("    {} - {} % errors ".format(date,errors))
+    for (date, errors) in rows:
+        print("    {} - {} % errors ".format(date, errors))
     print(" ")
     print("-" * 70)
     print(" ")
