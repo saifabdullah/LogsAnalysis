@@ -13,8 +13,3 @@ top_three_articles(),popular_authors() and high_error_days() has been written an
 view-name: viewcount
 "CREATE VIEW viewcount AS SELECT articles.title,articles.author,count(log.path) as views from articles inner join log on log.path=CONCAT('/article/',articles.slug) GROUP BY articles.title,articles.author ORDER BY views DESC;"
 
-view name: error_log
-"select date(time) as day,
-((SELECT cast(count(status) as float) from log where status != '200 OK') /
-(SELECT cast(count(status) as float) from log)) as errorrate
-from log group by day order by errorrate;"
